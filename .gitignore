@@ -22,3 +22,6 @@ TestResults/
 .idea/
 workshop-assets/*/raw.png
 release/
+
+# 本地打包的总发布包不入库
+深空当铺MOD_v*_release_*.zip
