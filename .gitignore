@@ -21,3 +21,4 @@ TestResults/
 .vs/
 .idea/
 workshop-assets/*/raw.png
+release/
