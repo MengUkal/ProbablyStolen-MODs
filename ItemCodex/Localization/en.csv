@@ -1,0 +1,52 @@
+# Comments start with #; format: key,value; values may be wrapped in "...", \n = newline
+# QoL Base - English
+cfg_section,Item Codex
+cfg_fast_shutter,Fast shutter
+cfg_fast_shutter_tip,Speeds up the shutter animation on open/close and the closing sequence
+cfg_shutter_speed,Shutter duration (seconds)
+cfg_shutter_speed_tip,Lower is faster; vanilla is 2.75s, recommended 0.3~0.8
+cfg_codex_key,Item codex hotkey
+cfg_codex_key_tip,Press to open/close the item codex window
+codex_title,Item Codex
+codex_search,Search name or ID…
+codex_dir_all,Category: All
+codex_scope_all,Scope: All items
+codex_scope_seen,Scope: Seen
+codex_count,Showing {0} / {1}
+codex_detail_id,ID: {0}
+codex_detail_value,Base value: {0}
+codex_flavor,""{0}""
+codex_dir_Amenities,Amenities
+codex_dir_Armor,Armor
+codex_dir_AquacultureItems,Aquaculture
+codex_dir_Character,Character items
+codex_dir_Construction,Construction
+codex_dir_Container,Containers
+codex_dir_Equipment,Equipment
+codex_dir_Explosive,Explosives
+codex_dir_Food,Food
+codex_dir_Furniture,Furniture
+codex_dir_GunMod,Gun mods
+codex_dir_Guns,Guns
+codex_dir_Hydroponic,Hydroponics
+codex_dir_Husbandry,Husbandry
+codex_dir_KeyItem,Key items
+codex_dir_Material,Materials
+codex_dir_Meds,Meds
+codex_dir_MeleeWeapon,Melee weapons
+codex_dir_Misc,Misc
+codex_dir_Mod,Mod items
+codex_dir_Module,Modules
+codex_dir_Node,Nodes
+codex_dir_NpcCharacter,NPC items
+codex_dir_Organ,Organs
+codex_dir_PlayerAbility,Player abilities
+codex_dir_PlayerCharacter,Player items
+codex_dir_RuinedMachine,Ruined machines
+codex_dir_ShipItem,Ship items
+codex_dir_ShipSystem,Ship systems
+codex_dir_StationMachinery,Station machinery
+codex_dir_TechnicianBackpack,Technician backpacks
+codex_dir_Tool,Tools
+codex_dir_Water,Water
+codex_dir_Wine,Wine

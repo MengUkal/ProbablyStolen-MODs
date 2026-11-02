@@ -1,0 +1,22 @@
+# ===== 版权敏感：绝不入库 =====
+# 游戏反编译源码（Questing Goose Studio 版权所有，仅本地参考）
+游戏反编译/
+
+# ===== 构建产物 =====
+bin/
+obj/
+*.user
+*.suo
+
+# ===== 上传工具产物（含 steam_api64.dll / Steamworks.NET.dll / exe / 日志）=====
+WorkshopUploaderTool/bin/
+
+# ===== 日志 / 临时 =====
+*.log
+*.err
+logs/
+TestResults/
+
+# ===== IDE =====
+.vs/
+.idea/

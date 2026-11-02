@@ -1,0 +1,10 @@
+# Comments start with #; format: key,value; values may be wrapped in "...", \n = newline
+# Customer HUD - English
+cfg_section,Customer HUD
+cfg_customer_hud,Next customer panel
+cfg_customer_hud_tip,Shows the next customer's portrait, name and queue size at the top-right corner while open
+cfg_skip_key,Skip customer hotkey
+cfg_skip_key_tip,Press to dismiss the current dismissable customer (same as clicking Dismiss)
+hud_next,Next: {0}
+hud_queue,Queue {0}
+hud_serving,Serving: {0}

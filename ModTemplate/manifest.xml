@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Probably Stolen MOD 清单
+  ID 规则: 仅字母/数字/_/-/., 不以 . 开头, 最长 64 字符
+  <Capabilities/> 表示本 MOD 不申请任何敏感能力
+  已知能力: files / network / process / dynamic-code / native / reflection-external / steam
+-->
+<Manifest>
+	<ID>ModTemplate</ID>
+	<Name>Mod Template (模板示例)</Name>
+	<Author>YourName</Author>
+	<ModVersion>0.1.0</ModVersion>
+	<Description>Starter template: IMod entry, Harmony patch demo, ModConfig, ModHook events, localization, game options and debug buttons.</Description>
+	<GameVersions>
+		<Version>0.46</Version>
+	</GameVersions>
+	<Assemblies>
+		<Assembly>ModTemplate.dll</Assembly>
+	</Assemblies>
+	<Capabilities/>
+</Manifest>

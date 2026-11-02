@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Manifest>
+	<ID>fast.shutter</ID>
+	<Name>快速卷帘门 (Fast Shutter)</Name>
+	<Author>MengUkal</Author>
+	<ModVersion>0.1.0</ModVersion>
+	<Description>加快开张与打烊时的卷帘门动画及打烊收尾流程，时长可在游戏设置中调节（原版 2.75 秒，推荐 0.3~0.8）。关闭开关即恢复原版手感。Speeds up the shutter animation on open/close; duration configurable in settings.</Description>
+	<GameVersions>
+		<Version>0.46</Version>
+	</GameVersions>
+	<Assemblies>
+		<Assembly>FastShutter.dll</Assembly>
+	</Assemblies>
+	<Capabilities/>
+</Manifest>

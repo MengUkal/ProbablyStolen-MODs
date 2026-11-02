@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Manifest>
+	<ID>profit.ledger</ID>
+	<Name>利润小账本 (Profit Ledger)</Name>
+	<Author>MengUkal</Author>
+	<ModVersion>0.1.0</ModVersion>
+	<Description>物品提示框追加利润行（现估值-进价，含利润率）与持有天数（随存档保存）；营业时右上角显示今日经营统计栏（购/售/净）。与顾客预览 HUD 相互独立。Tooltip profit &amp; held-days lines, plus an independent daily stats bar at the top-right corner.</Description>
+	<GameVersions>
+		<Version>0.46</Version>
+	</GameVersions>
+	<Assemblies>
+		<Assembly>ProfitLedger.dll</Assembly>
+	</Assemblies>
+	<Capabilities/>
+</Manifest>

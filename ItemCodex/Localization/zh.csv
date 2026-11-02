@@ -1,0 +1,52 @@
+# 注释行以 # 开头; 格式: key,value; 值可用 "..." 包裹, \n 表示换行
+# QoL 基础包 - 简体中文
+cfg_section,物品图鉴
+cfg_fast_shutter,快速卷帘门
+cfg_fast_shutter_tip,加快开张与打烊时的卷帘门动画及打烊收尾流程
+cfg_shutter_speed,卷帘门时长（秒）
+cfg_shutter_speed_tip,数值越小越快；原版为 2.75 秒，推荐 0.3~0.8
+cfg_codex_key,物品图鉴快捷键
+cfg_codex_key_tip,按此键打开/关闭物品图鉴窗口
+codex_title,物品图鉴
+codex_search,搜索名称或 ID…
+codex_dir_all,分类：全部
+codex_scope_all,范围：全部
+codex_scope_seen,范围：已见过
+codex_count,显示 {0} / 共 {1}
+codex_detail_id,ID：{0}
+codex_detail_value,基准价：{0}
+codex_flavor,「{0}」
+codex_dir_Amenities,设施
+codex_dir_Armor,护甲
+codex_dir_AquacultureItems,水产养殖
+codex_dir_Character,角色物品
+codex_dir_Construction,建材
+codex_dir_Container,容器
+codex_dir_Equipment,装备
+codex_dir_Explosive,爆炸物
+codex_dir_Food,食物
+codex_dir_Furniture,家具
+codex_dir_GunMod,枪械改装
+codex_dir_Guns,枪械
+codex_dir_Hydroponic,水培种植
+codex_dir_Husbandry,畜牧养殖
+codex_dir_KeyItem,钥匙物品
+codex_dir_Material,材料
+codex_dir_Meds,药品
+codex_dir_MeleeWeapon,近战武器
+codex_dir_Misc,杂项
+codex_dir_Mod,MOD 物品
+codex_dir_Module,模块
+codex_dir_Node,节点
+codex_dir_NpcCharacter,NPC 物品
+codex_dir_Organ,器官
+codex_dir_PlayerAbility,玩家能力
+codex_dir_PlayerCharacter,玩家物品
+codex_dir_RuinedMachine,废墟机器
+codex_dir_ShipItem,飞船物品
+codex_dir_ShipSystem,飞船系统
+codex_dir_StationMachinery,站点机械
+codex_dir_TechnicianBackpack,技师背包
+codex_dir_Tool,工具
+codex_dir_Water,水类
+codex_dir_Wine,酒类

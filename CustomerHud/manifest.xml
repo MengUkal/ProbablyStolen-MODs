@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Manifest>
+	<ID>customer.hud</ID>
+	<Name>顾客预览 HUD (Customer HUD)</Name>
+	<Author>MengUkal</Author>
+	<ModVersion>0.1.0</ModVersion>
+	<Description>营业时在屏幕右上角显示顾客面板：下一位顾客的头像、名字与排队人数。附带可自定义的"跳过当前顾客"快捷键。与利润小账本的今日统计栏相互独立、可任意组合。Next-customer portrait &amp; queue panel; skippable customers via hotkey.</Description>
+	<GameVersions>
+		<Version>0.46</Version>
+	</GameVersions>
+	<Assemblies>
+		<Assembly>CustomerHud.dll</Assembly>
+	</Assemblies>
+	<Capabilities/>
+</Manifest>

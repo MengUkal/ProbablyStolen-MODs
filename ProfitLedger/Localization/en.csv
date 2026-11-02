@@ -1,0 +1,15 @@
+# Comments start with #; format: key,value; values may be wrapped in "...", \n = newline
+# Profit Ledger - English
+cfg_section,Profit Ledger
+cfg_profit,Profit line
+cfg_profit_tip,"Adds a profit line (estimated value - bought price, with margin %) to item tooltips. Uses the vanilla BOUGHT_PRICE_TAG."
+cfg_days,Held-days hint
+cfg_days_tip,Shows how many days you have held this item in its tooltip
+cfg_daily_hud,Daily stats bar
+cfg_daily_hud_tip,Shows today's bought / sold / stock margin at the top-right corner while open
+tt_profit,Profit: {0} ({1}%)
+tt_days,Held for {0} days
+hud_today,Today
+hud_net,net {0}
+hud_sold,sold {0}
+hud_bought,bought {0}

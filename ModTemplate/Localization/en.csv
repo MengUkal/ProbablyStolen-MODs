@@ -1,0 +1,6 @@
+# 注释行以 # 开头; 格式: key,value; 值可用 "..." 包裹, \n 表示换行
+cfg_log_cash,Log cash changes
+cfg_log_cash_tip,Print a line to the log every time the store gains/loses credits
+cfg_bonus,Welcome bonus (credits)
+cfg_bonus_tip,Paid once each time a game is loaded (requires enabling this MOD)
+msg_welcome,{0} loaded successfully. Hello, pawnbroker!

@@ -1,0 +1,7 @@
+# Comments start with #; format: key,value; values may be wrapped in "...", \n = newline
+# Fast Shutter - English
+cfg_section,Fast Shutter
+cfg_fast_shutter,Fast shutter
+cfg_fast_shutter_tip,Speeds up the shutter animation on open/close and the closing sequence
+cfg_shutter_speed,Shutter duration (seconds)
+cfg_shutter_speed_tip,Lower is faster; vanilla is 2.75s, recommended 0.3~0.8

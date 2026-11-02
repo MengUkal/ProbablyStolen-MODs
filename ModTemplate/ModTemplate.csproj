@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Probably Stolen (深空当铺) MOD 工程模板
+    - 游戏引擎: Unity 2021.3.45f2 (Mono), API 兼容级别 netstandard2.1
+    - 游戏自带 MOD 加载器 (ModLoader), 无需 BepInEx / MelonLoader
+    - Harmony 由游戏自带 (0Harmony.dll), MOD 不要自带副本
+    所有游戏 DLL 引用都设 Private=false (不复制到输出),
+    因为 MOD 文件夹里出现未在 manifest.xml 声明的 DLL 会被游戏拒绝启用。
+  -->
+
+  <PropertyGroup>
+    <!-- 游戏安装路径: 改这里即可 -->
+    <GameRoot>D:\steamwork\steamapps\common\Probably Stolen</GameRoot>
+    <ManagedDir>$(GameRoot)\Probably Stolen_Data\Managed</ManagedDir>
+
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>ModTemplate</AssemblyName>
+    <RootNamespace>ModTemplate</RootNamespace>
+    <LangVersion>9.0</LangVersion>
+    <Nullable>disable</Nullable>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+    <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+    <DebugType>portable</DebugType>
+    <NoWarn>$(NoWarn);CS0414;CS0649;CS0067</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(ManagedDir)\Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>$(ManagedDir)\Assembly-CSharp-firstpass.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>$(ManagedDir)\UnityEngine.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(ManagedDir)\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>$(ManagedDir)\UnityEngine.UI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>$(ManagedDir)\0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Manifest>
+	<ID>item.codex</ID>
+	<Name>物品图鉴 (Item Codex)</Name>
+	<Author>MengUkal</Author>
+	<ModVersion>0.1.0</ModVersion>
+	<Description>全物品浏览窗口：按名称/ID 搜索、按目录分类筛选、"已见过"范围过滤、点击查看详情（图标/基准价/描述）。默认快捷键 F9，可在游戏设置中修改。Browse every item: search, category filter, seen-only scope, detail view. Hotkey F9 by default.</Description>
+	<GameVersions>
+		<Version>0.46</Version>
+	</GameVersions>
+	<Assemblies>
+		<Assembly>ItemCodex.dll</Assembly>
+	</Assemblies>
+	<Capabilities/>
+</Manifest>

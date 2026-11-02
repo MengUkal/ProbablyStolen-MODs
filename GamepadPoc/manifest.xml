@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Manifest>
+	<ID>gamepad.poc</ID>
+	<Name>Gamepad Support (Steam Deck 测试版)</Name>
+	<Author>modder</Author>
+	<ModVersion>0.0.3</ModVersion>
+	<Description>手柄适配 POC：虚拟光标 + 摇杆驱动。接入手柄后左摇杆=移动光标、A=左键(按住拖拽)、B=右键、右摇杆上下=滚轮。 Steam Deck 用户请先在游戏的 Steam Input 设置里选择手柄布局(Gamepad)以禁用默认鼠标模板。 能力声明: native = 通过 XInput 读取手柄; reflection-external = 启动时枚举游戏方法以应用输入改写补丁。</Description>
+	<GameVersions>
+		<Version>0.46</Version>
+	</GameVersions>
+	<Assemblies>
+		<Assembly>GamepadPoc.dll</Assembly>
+	</Assemblies>
+	<Capabilities>
+		<Capability>native</Capability>
+		<Capability>reflection-external</Capability>
+	</Capabilities>
+</Manifest>

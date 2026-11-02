@@ -1,0 +1,6 @@
+# 注释行以 # 开头; 格式: key,value; 值可用 "..." 包裹, \n 表示换行
+cfg_log_cash,记录资金变动
+cfg_log_cash_tip,"商店每笔资金增减都在日志中打印一行"
+cfg_bonus,欢迎资金（信用点）
+cfg_bonus_tip,每次读取游戏存档后发放一次（需要启用本 MOD）
+msg_welcome,{0} 加载成功。你好，当铺老板！
