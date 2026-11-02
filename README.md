@@ -65,6 +65,20 @@ powershell -ExecutionPolicy Bypass -File build.ps1 -Clean
 
 **拆分说明**：五个玩法 MOD 互不依赖，可独立上传创意工坊。共享逻辑归属：AcqDays（账本）、DailyStats（HUD）、CodexSeen（图鉴）；ProfitLedger 与 ItemCodex 各自 Harmony 补丁 `PlayerStore.OnItemBought`，互不冲突。原 qol.pack 已解散并从游戏 Mods 目录移除（存档里的启用记录会被 ModLoader 安全忽略）。
 
+## 五、创意工坊
+
+| MOD | 物品 ID | 链接 |
+|---|---|---|
+| 利润小账本 Profit Ledger | 3832269768 | https://steamcommunity.com/sharedfiles/filedetails/?id=3832269768 |
+| 顾客预览 HUD Customer HUD | 3832269928 | https://steamcommunity.com/sharedfiles/filedetails/?id=3832269928 |
+| 快速卷帘门 Fast Shutter | 3832270015 | https://steamcommunity.com/sharedfiles/filedetails/?id=3832270015 |
+| 物品图鉴 Item Codex | 3832270090 | https://steamcommunity.com/sharedfiles/filedetails/?id=3832270090 |
+
+- 工坊素材（BBCode 描述 + AI 生成封面）在 `workshop-assets/<Mod>/`
+- 更新已有物品：`WorkshopUploaderTool.exe --content <MOD目录> --desc-file <desc> --preview <preview> --id <物品ID> --changenote "..."`
+- 封面由 GLM CogView 生成（`add-banner.ps1` 叠加标题栏与署名）
+- 署名规范：所有 MOD 作者一律 **MengUkal**
+
 ## 三、MOD 文件夹结构（完整规范）
 
 ```
