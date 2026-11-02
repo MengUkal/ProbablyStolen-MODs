@@ -1,0 +1,22 @@
+[b]顾客预览 HUD (Customer HUD)[/b] — by MengUkal
+
+━━━ 功能 ━━━
+[list]
+[*][b]顾客面板[/b]：营业时右上角显示下一位顾客的[b]头像[/b]、名字与排队人数
+[*][b]正在接待兜底[/b]：队列空时自动切换为"正在接待：当前顾客"
+[*][b]跳过顾客快捷键[/b]：一键送走当前可送走的顾客（可在设置中绑定按键）
+[/list]
+
+━━━ 设置 ━━━
+游戏设置 → [b]顾客预览 HUD[/b]：面板开关 + 跳过快捷键绑定
+
+━━━ 说明 ━━━
+[list]
+[*]中文字形完整（使用游戏官方字体加载器按语言分配字库）
+[*]位于利润小账本统计栏下方，两者相互独立、可任意组合
+[*]兼容游戏 0.46；零敏感能力；与其他 MOD 无冲突
+[/list]
+
+[hr]
+[b]Customer HUD[/b] by MengUkal
+Shows the next customer's portrait, name and queue size at the top-right corner while open, with a "now serving" fallback. Includes a rebindable skip-customer hotkey. Coexists independently with the Profit Ledger stats bar. Compatible with game 0.46.

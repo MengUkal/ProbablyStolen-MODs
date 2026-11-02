@@ -1,0 +1,21 @@
+[b]快速卷帘门 (Fast Shutter)[/b] — by MengUkal
+
+━━━ 功能 ━━━
+[list]
+[*]加快[b]开张/打烊[/b]时的卷帘门动画
+[*]打烊收尾流程（隐藏前台、送走最后一位顾客）整体提速
+[*]时长可在设置中调节（原版 2.75 秒，推荐 0.3~0.8）
+[/list]
+
+━━━ 设置 ━━━
+游戏设置 → [b]快速卷帘门[/b]：开关 + 时长滑条；关闭开关即恢复原版手感
+
+━━━ 说明 ━━━
+[list]
+[*]兼容游戏 0.46；零敏感能力
+[*]功能极简、零依赖，适合与任何 MOD 组合
+[/list]
+
+[hr]
+[b]Fast Shutter[/b] by MengUkal
+Speeds up the shutter animation on open/close and the closing sequence. Duration configurable in settings (vanilla is 2.75s); disabling the toggle restores vanilla feel. Minimal and dependency-free. Compatible with game 0.46.

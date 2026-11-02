@@ -20,3 +20,4 @@ TestResults/
 # ===== IDE =====
 .vs/
 .idea/
+workshop-assets/*/raw.png

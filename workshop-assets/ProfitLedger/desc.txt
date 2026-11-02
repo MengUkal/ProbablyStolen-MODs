@@ -1,0 +1,22 @@
+[b]利润小账本 (Profit Ledger)[/b] — by MengUkal
+
+━━━ 功能 ━━━
+[list]
+[*][b]利润行[/b]：物品提示框追加一行利润（现估值 − 进价，含利润率），绿涨红跌一目了然
+[*][b]持有天数[/b]：显示该物品已被你持有多少天（随存档保存）
+[*][b]今日经营统计[/b]：营业时右上角显示今日 购/售/净（彩色，与顾客预览 HUD 相互独立）
+[/list]
+
+━━━ 设置 ━━━
+游戏设置 → [b]利润小账本[/b]：三项功能均可独立开关
+
+━━━ 说明 ━━━
+[list]
+[*]进价读取游戏原生记录（BOUGHT_PRICE_TAG），无需额外配置
+[*]兼容游戏 0.46；零敏感能力（不访问文件/网络）
+[*]与其他 MOD 无冲突，可任意组合；已启用旧版合体包的存档会自动迁移数据
+[/list]
+
+[hr]
+[b]Profit Ledger[/b] by MengUkal
+Adds a profit margin line (estimated value − bought price), held-days info to item tooltips, and a daily stats bar (bought/sold/net) at the top-right corner. All features independently toggleable in settings. Compatible with game 0.46.

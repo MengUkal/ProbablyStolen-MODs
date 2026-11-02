@@ -1,0 +1,23 @@
+[b]物品图鉴 (Item Codex)[/b] — by MengUkal
+
+━━━ 功能 ━━━
+[list]
+[*][b]全物品浏览[/b]：按名称/ID 即时搜索（防抖），分帧加载不卡顿
+[*][b]分类筛选[/b]：按游戏物品目录分类（枪械/护甲/食物/器官……中文分类名）
+[*][b]已见过过滤[/b]：只看你在存档中见过的物品（买/卖/持有自动记录，随存档保存）
+[*][b]详情面板[/b]：点击物品查看图标、基准价、描述与风格文本
+[/list]
+
+━━━ 设置 ━━━
+游戏设置 → [b]物品图鉴[/b]：快捷键可改（默认 F9）；调试面板也有入口按钮
+
+━━━ 说明 ━━━
+[list]
+[*]基于游戏官方 CustomUI 框架构建，风格原生
+[*]兼容游戏 0.46；零敏感能力
+[*]与其他 MOD 无冲突；旧版合体包的"已见过"数据会自动迁移
+[/list]
+
+[hr]
+[b]Item Codex[/b] by MengUkal
+Browse every item: instant search by name/ID, per-directory category filter, a seen-only scope (auto-tracked per save), and a detail view with icon, base value and flavor text. Hotkey F9 by default. Built on the game's official CustomUI framework. Compatible with game 0.46.
