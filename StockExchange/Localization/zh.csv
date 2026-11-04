@@ -11,6 +11,12 @@ cfg_vol,波动率倍率
 cfg_vol_tip,全体股票日波动的缩放倍率，0.2~3；1 为原版平衡值
 cfg_colors,A股配色（红涨绿跌）
 cfg_colors_tip,开启后涨为红色、跌为绿色；默认绿涨红跌
+cfg_news,每日收盘快报（报纸）
+cfg_news_tip,每天自动把环带交易所收盘摘要印进报纸；关闭后仍可能从普通新闻池随机抽出
+news_title,环带交易所收盘快报
+news_display,环带交易所
+news_desc_offline,交易所终端未接入——暗网里有传闻：接入后可看每日收盘行情。
+news_desc_hint,按交易终端快捷键（默认 F8）可看盘下单——读报在前、下单在后。
 ui_title,环带交易所（Orbit Exchange）
 ui_day,交易日
 ui_cash,现金

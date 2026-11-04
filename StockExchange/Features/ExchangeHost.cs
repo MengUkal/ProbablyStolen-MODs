@@ -69,6 +69,16 @@ public class ExchangeHost : MonoBehaviour
             Debug.LogWarning("[OrbitExchange] 结算轮询失败: " + e.Message);
         }
 
+        // ---- 报纸收盘快报（每日一刊，缺刊即补；内部自带日切判重）----
+        try
+        {
+            OrbitNews.TickDigest();
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning("[OrbitExchange] 收盘快报刊印失败: " + e.Message);
+        }
+
         // ---- 快捷键（仅游戏场景内响应）----
         if (entry.exchangeKey != KeyCode.None && Input.GetKeyDown(entry.exchangeKey))
         {

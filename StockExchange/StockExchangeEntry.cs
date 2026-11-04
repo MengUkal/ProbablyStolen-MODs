@@ -28,6 +28,7 @@ public class StockExchangeEntry : IMod
     internal ConfigEntry<float> driftPct;   // 日漂移 %（长期趋势）
     internal ConfigEntry<float> volMult;    // 波动率倍率
     internal ConfigEntry<bool> cnColors;    // A股配色（红涨绿跌）
+    internal ConfigEntry<bool> newsDaily;   // 每日收盘快报（报纸）
 
     public static string L(string key, params object[] args)
     {
@@ -38,6 +39,7 @@ public class StockExchangeEntry : IMod
     internal float Drift() { return (driftPct != null ? driftPct.Value : 0.08f) / 100f; }
     internal float VolMult() { return volMult != null ? volMult.Value : 1f; }
     internal bool CnColors() { return cnColors != null && cnColors.Value; }
+    internal bool NewsDailyOn() { return newsDaily != null && newsDaily.Value; }
 
     public void Init(ModManifest manifest)
     {
@@ -57,6 +59,9 @@ public class StockExchangeEntry : IMod
         cnColors = cfg.Define(
             "CnColors", false, "Exchange",
             () => L("cfg_colors"), () => L("cfg_colors_tip"));
+        newsDaily = cfg.Define(
+            "NewsDaily", true, "Exchange",
+            () => L("cfg_news"), () => L("cfg_news_tip"));
 
         Debug.Log($"[OrbitExchange] Init: {manifest.Name} v{manifest.ModVersion}");
     }
@@ -78,10 +83,17 @@ public class StockExchangeEntry : IMod
             0.2f, 3f, false, () => L("cfg_vol_tip"), v => "×" + v.ToString("0.0"));
         ModHelper.AddGameOptionToggle(ModId, "exchange", "cn_colors",
             () => L("cfg_colors"), () => cnColors.Value, v => cnColors.Set(v), () => L("cfg_colors_tip"));
+        ModHelper.AddGameOptionToggle(ModId, "exchange", "news_daily",
+            () => L("cfg_news"), () => newsDaily.Value, v => newsDaily.Set(v), () => L("cfg_news_tip"));
 
         // ---- 调试面板 ----
         ModHelper.AddDebugFunction(ModId, ModHelper.DEBUG_CATEGORY_MODDING,
             "Open Orbit Exchange", () => ExchangeUI.Toggle());
+        ModHelper.AddDebugFunction(ModId, ModHelper.DEBUG_CATEGORY_MODDING,
+            "Force News Digest", () => OrbitNews.ActivateDigestNow());
+
+        // ---- 报纸市场版（P3-1）：注册收盘快报蓝图（public static 池，零反射）----
+        OrbitNews.RegisterBlueprint();
 
         // 注意：暗网升级链【不在】OnEnable 注册！RegisterModUpgrade 内部会触碰 PlayerStore.Instance
         // （主菜单期是惰性单例，构造会 NRE → MOD 被标记 Init failed → LoadLocalization 被跳过 →
@@ -111,6 +123,7 @@ public class StockExchangeEntry : IMod
         ModHelper.RemoveGameOptions(ModId);
         ModHelper.RemoveDebugFunctions(ModId);
         ModHelper.RemoveNetworkUpgrades(ModId);
+        OrbitNews.UnregisterBlueprint();
 
         ExchangeHost.TearDown();
         ExchangeUI.OnTornDown();
@@ -122,6 +135,7 @@ public class StockExchangeEntry : IMod
 
     private void OnGameLoaded()
     {
+        OrbitNews.ResetForGameLoad(); // 先重置快报轮询（防跨存档水位残留）
         MarketData.ReloadForGameLoad(GetDay()); // 先清内存态再从本存档 ModData 恢复（防跨存档串数据）
         EnsureUpgradesRegistered();
         Debug.Log("[OrbitExchange] OnGameLoaded: day=" + GetDay()
@@ -134,6 +148,7 @@ public class StockExchangeEntry : IMod
 
     private void OnNewGameStarted(string scenarioId)
     {
+        OrbitNews.ResetForGameLoad();
         MarketData.ResetForNewGame(GetDay());
         EnsureUpgradesRegistered();
         Debug.Log("[OrbitExchange] OnNewGameStarted: fresh account, day=" + GetDay());
