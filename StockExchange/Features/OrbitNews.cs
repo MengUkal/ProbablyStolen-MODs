@@ -70,6 +70,7 @@ public static class OrbitNews
     // ------------------------------------------------------------ 每日刊印
 
     /// 宿主每帧调用：日切核对一次在版，缺刊补印（force 跳过冷却/兼容检查）。
+    /// 日切时若旧刊仍在版（如读档落在当日内）→ 撤旧重印，保证报纸永远是当前版式/最新收盘。
     public static void TickDigest()
     {
         StockExchangeEntry entry = StockExchangeEntry.Instance;
@@ -81,7 +82,7 @@ public static class OrbitNews
         if (day != lastSeenDay)
         {
             lastSeenDay = day;
-            digestUp = IsDigestActive(); // 读档场景：存档里已有本刊则不重发
+            ReprintFreshEdition(); // 读档/日切：撤掉在版旧刊（旧版式/旧收盘），印今天的新刊
         }
         if (digestUp)
         {
@@ -95,6 +96,37 @@ public static class OrbitNews
         mgr.ActivateEvent(CreateDailyDigest(), false, true);
         digestUp = true;
         Debug.Log($"[OrbitExchange] 收盘快报已送印 (day={day})");
+    }
+
+    /// 在版旧刊 → 撤销重印；不在版 → 直接印新。保证调用后 digestUp=true。
+    private static void ReprintFreshEdition()
+    {
+        StoreEventManager mgr = StoreStation.Instance != null ? StoreStation.Instance.storeEventManager : null;
+        if (mgr == null)
+        {
+            digestUp = false; // 拿不到管理器：下一帧 Tick 再试
+            return;
+        }
+        try
+        {
+            var evs = mgr.GetActiveEvents();
+            for (int i = 0; i < evs.Count; i++)
+            {
+                if (evs[i] != null && evs[i].identifier == Identifier)
+                {
+                    mgr.DeactivateEvent(evs[i]); // 撤旧（OnEventRemove→冷却=0，无副作用）
+                    Debug.Log("[OrbitExchange] 撤掉在版旧刊，重印今日版");
+                    break;
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning("[OrbitExchange] 撤旧刊失败（仍尝试印新）: " + e.Message);
+        }
+        mgr.ActivateEvent(CreateDailyDigest(), false, true);
+        digestUp = true;
+        Debug.Log($"[OrbitExchange] 收盘快报已送印 (day={lastSeenDay})");
     }
 
     /// 调试面板用：立即强推一期（不判重，用游戏侧 identifier 续期兜底）。
@@ -112,31 +144,6 @@ public static class OrbitNews
         mgr.ActivateEvent(CreateDailyDigest(), false, true);
         digestUp = true;
         Debug.Log("[OrbitExchange] 收盘快报已强推（调试）");
-    }
-
-    private static bool IsDigestActive()
-    {
-        try
-        {
-            StoreEventManager mgr = StoreStation.Instance != null ? StoreStation.Instance.storeEventManager : null;
-            if (mgr == null)
-            {
-                return true; // 拿不到管理器就当在版，避免误发
-            }
-            var evs = mgr.GetActiveEvents();
-            for (int i = 0; i < evs.Count; i++)
-            {
-                if (evs[i] != null && evs[i].identifier == Identifier)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-        catch (Exception)
-        {
-            return true;
-        }
     }
 
     // ------------------------------------------------------------ 事件工厂
