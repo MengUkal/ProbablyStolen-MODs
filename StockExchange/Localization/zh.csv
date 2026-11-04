@@ -1,0 +1,67 @@
+# 环带交易所 - 简体中文
+# 格式: key,value；值可用 "..." 包裹
+cfg_section,环带交易所
+cfg_key,交易所快捷键
+cfg_key_tip,按此键打开/关闭环带交易所窗口（默认 F8）
+cfg_fee,手续费率（%）
+cfg_fee_tip,单边手续费率，最低 5 信用点；原版平衡建议 1%
+cfg_drift,日漂移（%）
+cfg_drift_tip,市场长期趋势；正数利于玩家，原版平衡建议 0.08
+cfg_vol,波动率倍率
+cfg_vol_tip,全体股票日波动的缩放倍率，0.2~3；1 为原版平衡值
+cfg_colors,A股配色（红涨绿跌）
+cfg_colors_tip,开启后涨为红色、跌为绿色；默认绿涨红跌
+ui_title,环带交易所（Orbit Exchange）
+ui_day,交易日
+ui_cash,现金
+ui_pnl,今日盈亏
+ui_tier,账户
+ui_cap,上限 {0}
+ui_locked,未接入
+ui_list_header,行情
+ui_qty,数量
+ui_max,最大
+ui_buy,买入
+ui_sell,卖出
+ui_sellall,清仓
+ui_all,全部
+ui_no_pos,未持仓
+ui_pos,持仓 {0} 股 @ {1} · 市值 {2} · 浮盈 {3}
+ui_cap_line,单股持仓上限 {0}
+ui_total_pnl,已实现盈亏 {0} · 成交 {1} 笔
+ui_warn_future,⚠ 已知未来事件将冲击此股——盯紧报纸
+ui_need_access,需要暗网升级【交易所接入】才能交易
+ui_need_quant,需要暗网升级【量化终端】才能交易
+msg_bought,已买入 {0} 股 {1}，实付 {2}
+msg_sold,已卖出 {0} {1}，到账 {2}
+msg_no_cash,现金不足
+msg_cap,超出单股持仓上限
+msg_bad_qty,数量无效
+msg_none,没有持仓
+tier0,未接入
+tier1,交易所接入
+tier2,量化终端
+tier3,做空执照
+up_sub,环带交易所
+up_access_title,交易所接入
+up_access_desc,"接入环带交易所终端：解锁股票账户、像素K线与 4 只稳健标的（HYD/NFR/CON/MED），单股持仓上限 5,000。"
+up_quant_title,量化终端
+up_quant_desc,"解锁全部 8 只标的与未来事件波动预警（只提示、不剧透方向），持仓上限提升至 10,000。"
+up_short_title,做空执照
+up_short_desc,"解锁做空资质与限价委托（功能将在后续版本开放），单股持仓上限提升至 20,000。"
+st_HYD_name,环带水务
+st_HYD_blurb,环带最老牌的公用事业，水表转一天、钱就进一天。稳健得像太空中没有风。
+st_NFR_name,营养果集团
+st_NFR_blurb,把营养果做成宇宙硬通货的农业巨头。种子就是它的命根子。
+st_CON_name,轨道建设
+st_CON_blurb,哪里有工程，哪里就有他们的脚手架。低价股，事件多。
+st_MED_name,医学联合体
+st_MED_blurb,空间站唯一的药品供应商——短缺就是它的旺季。
+st_MIN_name,小行星矿业
+st_MIN_blurb,炸开一颗小行星，就多一张发薪单。传闻最多的板块。
+st_CRZ_name,星际邮轮
+st_CRZ_blurb,邮轮一靠港，全站都沾光。游客经济的晴雨表。
+st_PWR_name,聚变能源
+st_PWR_blurb,全站的电都从这里来。停电？那叫“应急电源概念日”。
+st_ART_name,星港艺术
+st_ART_blurb,一幅画值一艘船，也可能一夜归零。妖股勿重仓。

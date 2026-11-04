@@ -1,0 +1,14 @@
+<Manifest>
+	<ID>stock.exchange</ID>
+	<Name>环带交易所 (Orbit Exchange)</Name>
+	<Author>MengUkal</Author>
+	<ModVersion>0.1.0</ModVersion>
+	<Description>通过暗网接入"环带交易所"：8 只空间站股票、像素K线、买卖持仓，行情与报纸事件真实联动——读报、抓传闻、低买高卖。快捷键默认 F8，需先在暗网购买"交易所接入"。Access the Orbit Exchange from the darknet: 8 station stocks with pixel charts. Prices react to newspaper events — read the news, front-run the rumors, buy low, sell high. Hotkey F8 by default.</Description>
+	<GameVersions>
+		<Version>0.46</Version>
+	</GameVersions>
+	<Assemblies>
+		<Assembly>StockExchange.dll</Assembly>
+	</Assemblies>
+	<Capabilities/>
+</Manifest>

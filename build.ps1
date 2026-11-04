@@ -14,7 +14,7 @@ param(
 
 $ErrorActionPreference = "Stop"
 
-$Mods = @("ModTemplate", "GamepadPoc", "ProfitLedger", "CustomerHud", "FastShutter", "ItemCodex")
+$Mods = @("ModTemplate", "GamepadPoc", "ProfitLedger", "CustomerHud", "FastShutter", "ItemCodex", "StockExchange")
 if ($Mod -ne "all") { $Mods = @($Mod) }
 
 $GameRoot   = "D:\steamwork\steamapps\common\Probably Stolen"

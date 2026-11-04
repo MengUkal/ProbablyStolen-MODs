@@ -1,0 +1,67 @@
+# Orbit Exchange - English
+# Format: key,value; values may be wrapped in "..."
+cfg_section,Orbit Exchange
+cfg_key,Exchange Hotkey
+cfg_key_tip,Press to toggle the Orbit Exchange window (default F8)
+cfg_fee,Fee Rate (%)
+cfg_fee_tip,One-side fee, minimum 5 credits. Vanilla balance: 1%
+cfg_drift,Daily Drift (%)
+cfg_drift_tip,Long-term market trend. Vanilla balance: 0.08
+cfg_vol,Volatility Multiplier
+cfg_vol_tip,Scales daily volatility of all stocks (0.2~3). 1 = vanilla balance
+cfg_colors,CN Colors (red up / green down)
+cfg_colors_tip,Swap candle colors to the Chinese convention (red = up)
+ui_title,Orbit Exchange
+ui_day,Day
+ui_cash,Cash
+ui_pnl,Day P&L
+ui_tier,Account
+ui_cap,Cap {0}
+ui_locked,Locked
+ui_list_header,Market
+ui_qty,Qty
+ui_max,Max
+ui_buy,Buy
+ui_sell,Sell
+ui_sellall,Sell All
+ui_all,all
+ui_no_pos,No position
+ui_pos,Position {0} @ {1} · Value {2} · P&L {3}
+ui_cap_line,Per-stock cap {0}
+ui_total_pnl,Realized P&L {0} · {1} trades
+ui_warn_future,⚠ A known future event will hit this stock — watch the newspaper
+ui_need_access,Requires darknet upgrade [Exchange Access]
+ui_need_quant,Requires darknet upgrade [Quant Terminal]
+msg_bought,Bought {0} {1} for {2}
+msg_sold,Sold {0} {1} for {2}
+msg_no_cash,Not enough cash
+msg_cap,Exceeds per-stock position cap
+msg_bad_qty,Invalid quantity
+msg_none,No position to sell
+tier0,No Access
+tier1,Exchange Access
+tier2,Quant Terminal
+tier3,Short License
+up_sub,Orbit Exchange
+up_access_title,Exchange Access
+up_access_desc,"Plug into the Orbit Exchange terminal: unlock a stock account, pixel charts, and 4 blue-chip tickers (HYD/NFR/CON/MED), per-stock cap 5,000."
+up_quant_title,Quant Terminal
+up_quant_desc,"Unlock all 8 tickers and volatility alerts for known upcoming events (no spoilers), cap raised to 10,000."
+up_short_title,Short License
+up_short_desc,"License for short selling and limit orders (features arriving in a later update), per-stock cap raised to 20,000."
+st_HYD_name,Orbital Waterworks
+st_HYD_blurb,"The ring's oldest utility. Meters spin, money flows — steady as vacuum."
+st_NFR_name,Nutrifruit Foods
+st_NFR_blurb,"The agri-giant that turned nutrifruit into hard currency. Seeds are its lifeline."
+st_CON_name,OrbitBuild
+st_CON_blurb,"Where there is a project, there is their scaffolding. Cheap stock, eventful life."
+st_MED_name,MedUnion
+st_MED_blurb,"The station's only medicine supplier. A shortage is just a good quarter."
+st_MIN_name,Asteroid Mining Co.
+st_MIN_blurb,"Crack an asteroid, cut a paycheck. The rumor mill's favorite board."
+st_CRZ_name,Starline Cruises
+st_CRZ_blurb,"When a cruise docks, the whole station cashes in. Tourism barometer."
+st_PWR_name,Fusion Dynamics
+st_PWR_blurb,"All the station's power comes from here. A blackout? We call that an emergency-generator day."
+st_ART_name,NovaArt Guild
+st_ART_blurb,"One painting buys a ship — or drops to nothing overnight. Don't overweight the meme stock."
