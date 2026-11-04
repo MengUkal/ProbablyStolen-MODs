@@ -1,0 +1,37 @@
+[b]环带交易所 (Orbit Exchange)[/b] — by MengUkal
+
+━━━ 这是什么 ━━━
+白天收赃、夜里看盘：暗网深处的环带交易所，把当铺变现的钱变成 K 线上的仓位。
+[color=#BE514C]读报在前、下单在后[/color]——报纸事件与板块行情真实联动，把黑心当铺做成对冲基金。
+
+━━━ 功能 ━━━
+[list]
+[*][b]8 只空间站标的[/b]：公用/农业/建筑/医疗/矿业/旅游/能源/奢侈品，各自独立波动与板块
+[*][b]像素 K 线[/b]：30 日历史 + 30 日均线，可选 A 股配色（红涨绿跌）
+[*][b]完整交易[/b]：买入/卖出/清仓/最大可买，手续费 1%（最低 5），单股持仓上限分级 5,000/10,000/20,000
+[*][b]做空（做空执照）[/b]：借券费 0.5%/日，开空保证金 150%，强平线 120% 自动平仓
+[*][b]限价委托[/b]：买/卖/开空/平空 × 限价，每日收盘撮合（滑点 0），支持撤单
+[*][b]报纸市场版[/b]：每日收盘快报自动印进《底线公报》——事件→板块→行情的传导闭环
+[*][b]事件联动[/b]：36 条游戏事件 → 板块冲击（矿业归港、种子短缺、全站停电……）
+[*][b]暗网三档解锁[/b]：交易所接入 250 → 量化终端 500 → 做空执照 800
+[*][b]全参数 ModConfig[/b]：手续费率/日漂移/波动率倍率/配色/快捷键游戏内可调
+[/list]
+
+━━━ 上手三步 ━━━
+[list]
+[*]暗网购买【交易所接入】(250)——解锁账户、K 线与 4 只稳健标的
+[*]按 [b]F8[/b] 打开交易终端（可改键）
+[*]读报找事件 → 低吸高抛；进阶玩家直接上做空执照玩保证金
+[/list]
+
+━━━ 说明 ━━━
+[list]
+[*]行情使用独立随机源（种子入档），绝不消耗原版顾客/掉落随机序列
+[*]市场状态随玩家存档保存，老档无损接入；跨存档读档自动隔离
+[*]兼容游戏 0.46；官方 Mod API + 公开类型引用，零 Harmony 补丁；与其他 MOD 无冲突
+[*]中英双语（跟随游戏语言）
+[/list]
+
+[hr]
+[b]Orbit Exchange[/b] by MengUkal
+Trade 8 orbital stocks from behind your pawnshop counter: pixel charts, short selling with margin calls, limit orders filled at each daily close, and a market digest printed into the in-game newspaper. Events move sectors — read the paper, then trade. Config-driven, save-safe, zero Harmony patches. Compatible with game 0.46.
