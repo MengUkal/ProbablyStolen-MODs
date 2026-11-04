@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 // ============================================================================
@@ -35,6 +36,16 @@ public static class MarketCatalog
     };
 }
 
+/// 限价委托（P2）：每日结算按当日新收盘价撮合，穿过限价即成交（滑点 0）。
+[Serializable]
+public class PendingOrder
+{
+    public int idx;      // 标的下标
+    public int side;     // 0=挂买 1=挂卖 2=挂空(开空) 3=挂平(平空)
+    public int shares;
+    public float limit;  // 限价
+}
+
 [Serializable]
 public class ExchangeState
 {
@@ -46,8 +57,12 @@ public class ExchangeState
     public float[] historyFlat = new float[MarketCatalog.Count * MarketData.HistLen]; // 旧→新
     public int[] qty = new int[MarketCatalog.Count];
     public float[] avgCost = new float[MarketCatalog.Count];
-    public int realized;                               // 已实现盈亏（含费）
+    public int realized;                               // 已实现盈亏（含费/借券费）
     public int trades;
+    // ---- P2 做空 + 限价委托（JsonUtility 对老存档缺失字段保留构造初值）----
+    public int[] shortQty = new int[MarketCatalog.Count];         // 空头股数
+    public float[] shortAvgCost = new float[MarketCatalog.Count]; // 空头开仓均价
+    public List<PendingOrder> orders = new List<PendingOrder>();  // 未成交限价委托
 }
 
 public static class MarketData
@@ -136,6 +151,19 @@ public static class MarketData
             {
                 Debug.LogWarning("[OrbitExchange] 存档状态结构不匹配，重建账户");
                 return false;
+            }
+            // P2 新字段兜底：老存档 JSON 无这些字段，防御性归零（结构校验放宽，不拒老档）
+            if (s.shortQty == null || s.shortQty.Length != MarketCatalog.Count)
+            {
+                s.shortQty = new int[MarketCatalog.Count];
+            }
+            if (s.shortAvgCost == null || s.shortAvgCost.Length != MarketCatalog.Count)
+            {
+                s.shortAvgCost = new float[MarketCatalog.Count];
+            }
+            if (s.orders == null)
+            {
+                s.orders = new List<PendingOrder>();
             }
             State = s;
             PriceEngine.Reseed(s.seed);
@@ -226,6 +254,17 @@ public static class MarketData
                 PushHistory(i, np);
             }
             State.lastSettledDay++;
+
+            // P2：撮合限价单 → 计借券费 → 强平检查（均按当日新收盘价）。
+            // 异常只记录不上抛，绝不能打断逐日补算（断档保护优先级更高）。
+            try
+            {
+                Broker.OnDaySettled();
+            }
+            catch (Exception ex)
+            {
+                Debug.LogWarning("[OrbitExchange] 做空/委托结算失败: " + ex.Message);
+            }
         }
 
         if (State.lastSettledDay < day)

@@ -23,9 +23,11 @@ public static class ExchangeUI
     private static CustomUIElement tierEl;
     private static CustomUIElement msgEl;
     private static CustomUIElement qtyEl;
+    private static CustomUIElement limitEl;
 
     private static int selected = -1;
     private static string qtyText = "10";
+    private static string limitText = "";
     private static Texture2D chartTex;
 
     private static readonly Color UpColor = new Color(0.30f, 0.90f, 0.45f);
@@ -73,7 +75,7 @@ public static class ExchangeUI
         windowRoot = null;
         listContent = null;
         detailHost = null;
-        dayEl = cashEl = pnlEl = tierEl = msgEl = qtyEl = null;
+        dayEl = cashEl = pnlEl = tierEl = msgEl = qtyEl = limitEl = null;
         ChartTexture.Destroy(ref chartTex);
     }
 
@@ -153,6 +155,12 @@ public static class ExchangeUI
         {
             selected = 0;
         }
+        // 结算产生的通知（委托成交/作废/强平）优先显示
+        string n = Broker.DrainNotices();
+        if (n != null)
+        {
+            SetMsg(n, FlatColor);
+        }
         RefreshTop();
         RebuildList();
         ShowDetail();
@@ -230,6 +238,8 @@ public static class ExchangeUI
             string label = (idx == selected ? "▶ " : "") + def.code + " "
                 + StockExchangeEntry.L("st_" + def.code + "_name")
                 + "   " + p.ToString("0.0") + " " + arrow + PctText(chg)
+                + (st.shortQty[idx] > 0 ? " · " + StockExchangeEntry.L("ui_short_mark",
+                    st.shortQty[idx].ToString("N0")) : "")
                 + (locked ? " · " + StockExchangeEntry.L("ui_locked") : "");
 
             try
@@ -335,6 +345,18 @@ public static class ExchangeUI
             {
                 rb.AddLabel(StockExchangeEntry.L("ui_no_pos"), "se_pos");
             }
+            if (st.shortQty[selected] > 0)
+            {
+                // 空头行：价格低于开空均价为盈利
+                float shortMv = st.shortQty[selected] * p;
+                float shortPnl = (st.shortAvgCost[selected] - p) * st.shortQty[selected];
+                rb.AddLabel(StockExchangeEntry.L("ui_short_pos",
+                    st.shortQty[selected].ToString("N0"),
+                    st.shortAvgCost[selected].ToString("0.0"),
+                    shortMv.ToString("N0"),
+                    Signed(Mathf.RoundToInt(shortPnl))), "se_short_pos");
+                rb.Last.SetTextColor(SignColor(Mathf.RoundToInt(shortPnl)));
+            }
             rb.AddLabel(StockExchangeEntry.L("ui_cap_line", Broker.CapFor(tier).ToString("N0")), "se_cap");
             rb.AddLabel(StockExchangeEntry.L("ui_total_pnl",
                 Signed(st.realized), st.trades.ToString("N0")), "se_realized");
@@ -342,6 +364,7 @@ public static class ExchangeUI
             rb.End();
 
             AddTradeRow(rb, def, tier);
+            AddOrdersSection(rb, tier);
         }
         catch (Exception e)
         {
@@ -351,6 +374,7 @@ public static class ExchangeUI
     }
 
     /// 交易行（统一控件宽度）；标的未解锁时显示所需升级提示。
+    /// T3 追加做空行：开空/平空 + 限价输入 + 四种挂单按钮。
     private static void AddTradeRow(CustomUIBuilder rb, StockDef def, int tier)
     {
         if (def.minTier > tier)
@@ -373,6 +397,76 @@ public static class ExchangeUI
         rb.AddButton(StockExchangeEntry.L("ui_sellall"), () => DoSell(true), "se_btn_sellall");
         rb.Last.SetFixedWidth(52f);
         rb.End();
+
+        if (tier < 3)
+        {
+            rb.AddWarning(StockExchangeEntry.L("ui_need_short"), "se_need_short");
+            return;
+        }
+
+        // ---- P2 做空行 ----
+        rb.BeginRow();
+        rb.AddButton(StockExchangeEntry.L("ui_open_short"), DoOpenShort, "se_btn_short");
+        rb.Last.SetFixedWidth(52f);
+        rb.AddButton(StockExchangeEntry.L("ui_close_short"), () => DoCloseShort(false), "se_btn_cshort");
+        rb.Last.SetFixedWidth(52f);
+        rb.AddLabel(StockExchangeEntry.L("ui_limit"), "se_limit_lbl");
+        rb.AddInput("", limitText, null, "se_limit", t => limitText = t);
+        limitEl = rb.Last;
+        limitEl.SetFixedWidth(88f);
+        rb.AddButton(StockExchangeEntry.L("ui_lbuy"), () => DoPlace(0), "se_btn_lbuy");
+        rb.Last.SetFixedWidth(52f);
+        rb.AddButton(StockExchangeEntry.L("ui_lsell"), () => DoPlace(1), "se_btn_lsell");
+        rb.Last.SetFixedWidth(52f);
+        rb.AddButton(StockExchangeEntry.L("ui_lshort"), () => DoPlace(2), "se_btn_lshort");
+        rb.Last.SetFixedWidth(52f);
+        rb.AddButton(StockExchangeEntry.L("ui_lclose"), () => DoPlace(3), "se_btn_lclose");
+        rb.Last.SetFixedWidth(52f);
+        rb.End();
+    }
+
+    /// 委托区：当前标的的挂单列表 + 撤单按钮（T3 可见）。
+    private static void AddOrdersSection(CustomUIBuilder rb, int tier)
+    {
+        if (tier < 3)
+        {
+            return;
+        }
+        var st = MarketData.State;
+        if (st == null)
+        {
+            return;
+        }
+        rb.AddLabel(StockExchangeEntry.L("ui_orders"), "se_orders_hdr");
+        rb.Last.SetTextColor(FlatColor);
+
+        int shown = 0;
+        if (st.orders != null)
+        {
+            for (int k = 0; k < st.orders.Count; k++)
+            {
+                if (st.orders[k] == null || st.orders[k].idx != selected)
+                {
+                    continue;
+                }
+                PendingOrder o = st.orders[k];
+                int kk = k; // 闭包捕获当前下标
+                rb.BeginRow();
+                rb.AddLabel(StockExchangeEntry.L("side_" + o.side)
+                    + " " + o.shares.ToString("N0")
+                    + " @ " + o.limit.ToString("0.0"), "se_order_" + kk);
+                rb.Last.SetFixedWidth(220f);
+                rb.AddButton(StockExchangeEntry.L("ui_cancel"), () => DoCancel(kk), "se_btn_cancel_" + kk);
+                rb.Last.SetFixedWidth(36f);
+                rb.End();
+                shown++;
+            }
+        }
+        if (shown == 0)
+        {
+            rb.AddLabel(StockExchangeEntry.L("ui_no_orders"), "se_orders_empty");
+            rb.Last.SetTextColor(LockedColor);
+        }
     }
 
     // ---------------------------------------------------------------- 交易
@@ -436,6 +530,120 @@ public static class ExchangeUI
             SetMsg(StockExchangeEntry.L(err), DownColor);
         }
         RefreshAll();
+    }
+
+    // ---------------------------------------------------------------- P2 做空/委托
+
+    private static void DoOpenShort()
+    {
+        int shares = ParseQty();
+        if (shares <= 0)
+        {
+            return;
+        }
+        int requiredMargin;
+        string err = Broker.TryOpenShort(selected, shares, out requiredMargin);
+        if (err == null)
+        {
+            float mv = shares * MarketData.State.prices[selected];
+            SetMsg(StockExchangeEntry.L("msg_short_opened",
+                shares.ToString("N0"),
+                MarketCatalog.Stocks[selected].code,
+                mv.ToString("N0"),
+                requiredMargin.ToString("N0")), DownColor);
+        }
+        else
+        {
+            SetMsg(StockExchangeEntry.L(err), DownColor);
+        }
+        RefreshAll();
+    }
+
+    private static void DoCloseShort(bool closeAll)
+    {
+        int shares = closeAll ? 0 : ParseQty();
+        if (!closeAll && shares <= 0)
+        {
+            return;
+        }
+        int pnl;
+        string err = Broker.TryCloseShort(selected, shares, closeAll, out pnl);
+        if (err == null)
+        {
+            SetMsg(StockExchangeEntry.L("msg_short_closed",
+                (closeAll ? StockExchangeEntry.L("ui_all") : shares.ToString("N0")),
+                MarketCatalog.Stocks[selected].code,
+                Signed(pnl)), pnl >= 0 ? UpColor : DownColor);
+        }
+        else
+        {
+            SetMsg(StockExchangeEntry.L(err), DownColor);
+        }
+        RefreshAll();
+    }
+
+    private static void DoPlace(int side)
+    {
+        int shares = ParseQty();
+        if (shares <= 0)
+        {
+            return;
+        }
+        float limit = ParseLimit();
+        if (limit <= 0f)
+        {
+            return;
+        }
+        string err = Broker.PlaceOrder(selected, side, shares, limit);
+        if (err == null)
+        {
+            SetMsg(StockExchangeEntry.L("msg_order_placed",
+                StockExchangeEntry.L("side_" + side),
+                shares.ToString("N0"),
+                MarketCatalog.Stocks[selected].code,
+                limit.ToString("0.0")), FlatColor);
+        }
+        else
+        {
+            SetMsg(StockExchangeEntry.L(err), DownColor);
+        }
+        RefreshAll();
+    }
+
+    private static void DoCancel(int k)
+    {
+        var st = MarketData.State;
+        if (st == null || st.orders == null || k < 0 || k >= st.orders.Count)
+        {
+            return;
+        }
+        PendingOrder o = st.orders[k];
+        string err = Broker.CancelOrder(k);
+        if (err == null)
+        {
+            SetMsg(StockExchangeEntry.L("msg_order_cancelled",
+                StockExchangeEntry.L("side_" + o.side),
+                o.shares.ToString("N0"),
+                MarketCatalog.Stocks[o.idx].code,
+                o.limit.ToString("0.0")), FlatColor);
+        }
+        else
+        {
+            SetMsg(StockExchangeEntry.L(err), DownColor);
+        }
+        RefreshAll();
+    }
+
+    private static float ParseLimit()
+    {
+        float v;
+        if (!float.TryParse((limitText ?? "").Trim(), NumberStyles.Float,
+            CultureInfo.InvariantCulture, out v) || v <= 0f)
+        {
+            SetMsg(StockExchangeEntry.L("msg_bad_price"), DownColor);
+            return 0f;
+        }
+        return Mathf.Round(v * 10f) / 10f;
     }
 
     private static int ParseQty()

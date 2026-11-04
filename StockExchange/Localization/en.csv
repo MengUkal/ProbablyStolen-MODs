@@ -27,6 +27,23 @@ ui_sellall,Sell All
 ui_all,all
 ui_no_pos,No position
 ui_pos,Position {0} @ {1} · Value {2} · P&L {3}
+ui_short_mark,short {0}
+ui_short_pos,Short {0} @ {1} · Value {2} · P&L {3}
+ui_open_short,Short
+ui_close_short,Cover
+ui_limit,Limit
+ui_lbuy,L-Buy
+ui_lsell,L-Sell
+ui_lshort,L-Short
+ui_lclose,L-Cover
+ui_orders,Orders (fill at daily close)
+ui_no_orders,No orders
+ui_cancel,X
+side_0,Buy
+side_1,Sell
+side_2,Short
+side_3,Cover
+ui_need_short,Requires darknet upgrade [Short License] for shorts/orders
 ui_cap_line,Per-stock cap {0}
 ui_total_pnl,Realized P&L {0} · {1} trades
 ui_warn_future,⚠ A known future event will hit this stock — watch the newspaper
@@ -34,9 +51,19 @@ ui_need_access,Requires darknet upgrade [Exchange Access]
 ui_need_quant,Requires darknet upgrade [Quant Terminal]
 msg_bought,Bought {0} {1} for {2}
 msg_sold,Sold {0} {1} for {2}
+msg_short_opened,Shorted {0} {1} · value {2} · margin {3}
+msg_short_closed,Covered {0} {1} · P&L {2}
+msg_order_placed,Order placed {0} {1} {2} @ {3}
+msg_order_filled,Order filled {0} {1} {2} (limit {3})
+msg_order_cancelled,Cancelled {0} {1} {2} @ {3}
+msg_order_void,Order voided ({0}): {1} {2} {3}
+msg_margin_call,⚠ Margin below 120% — shorts force-closed at close
 msg_no_cash,Not enough cash
+msg_no_margin,Not enough margin (need cash+holdings ≥ short value×150%)
 msg_cap,Exceeds per-stock position cap
+msg_order_max,Too many orders (max 20)
 msg_bad_qty,Invalid quantity
+msg_bad_price,Invalid limit price
 msg_none,No position to sell
 tier0,No Access
 tier1,Exchange Access
@@ -48,7 +75,7 @@ up_access_desc,"Plug into the Orbit Exchange terminal: unlock a stock account, p
 up_quant_title,Quant Terminal
 up_quant_desc,"Unlock all 8 tickers and volatility alerts for known upcoming events (no spoilers), cap raised to 10,000."
 up_short_title,Short License
-up_short_desc,"License for short selling and limit orders (features arriving in a later update), per-stock cap raised to 20,000."
+up_short_desc,"Unlock short selling and limit orders: 0.5%/day borrow fee · 150% open margin · 120% margin call · limit orders fill at each daily close; per-stock cap raised to 20,000."
 st_HYD_name,Orbital Waterworks
 st_HYD_blurb,"The ring's oldest utility. Meters spin, money flows — steady as vacuum."
 st_NFR_name,Nutrifruit Foods

@@ -27,6 +27,23 @@ ui_sellall,清仓
 ui_all,全部
 ui_no_pos,未持仓
 ui_pos,持仓 {0} 股 @ {1} · 市值 {2} · 浮盈 {3}
+ui_short_mark,空 {0}
+ui_short_pos,空头 {0} 股 @ {1} · 市值 {2} · 浮盈 {3}
+ui_open_short,开空
+ui_close_short,平空
+ui_limit,限价
+ui_lbuy,挂买
+ui_lsell,挂卖
+ui_lshort,挂空
+ui_lclose,挂平
+ui_orders,委托（每日收盘撮合）
+ui_no_orders,无委托
+ui_cancel,撤
+side_0,买入
+side_1,卖出
+side_2,开空
+side_3,平空
+ui_need_short,需要暗网升级【做空执照】才能做空/挂单
 ui_cap_line,单股持仓上限 {0}
 ui_total_pnl,已实现盈亏 {0} · 成交 {1} 笔
 ui_warn_future,⚠ 已知未来事件将冲击此股——盯紧报纸
@@ -34,9 +51,19 @@ ui_need_access,需要暗网升级【交易所接入】才能交易
 ui_need_quant,需要暗网升级【量化终端】才能交易
 msg_bought,已买入 {0} 股 {1}，实付 {2}
 msg_sold,已卖出 {0} {1}，到账 {2}
+msg_short_opened,已开空 {0} 股 {1}，市值 {2}（需保证金 {3}）
+msg_short_closed,已平空 {0} {1}，盈亏 {2}
+msg_order_placed,已挂单 {0} {1} 股 {2} @ {3}
+msg_order_filled,委托成交 {0} {1} 股 {2}（限价 {3}）
+msg_order_cancelled,已撤单 {0} {1} 股 {2} @ {3}
+msg_order_void,委托作废（{0}）：{1} {2} 股 {3}
+msg_margin_call,⚠ 保证金跌破 120%，空头已按收盘价强制平仓
 msg_no_cash,现金不足
+msg_no_margin,保证金不足（需 现金+持仓净值 ≥ 空头市值×150%）
 msg_cap,超出单股持仓上限
+msg_order_max,委托过多（最多 20 条）
 msg_bad_qty,数量无效
+msg_bad_price,限价无效
 msg_none,没有持仓
 tier0,未接入
 tier1,交易所接入
@@ -48,7 +75,7 @@ up_access_desc,"接入环带交易所终端：解锁股票账户、像素K线与
 up_quant_title,量化终端
 up_quant_desc,"解锁全部 8 只标的与未来事件波动预警（只提示、不剧透方向），持仓上限提升至 10,000。"
 up_short_title,做空执照
-up_short_desc,"解锁做空资质与限价委托（功能将在后续版本开放），单股持仓上限提升至 20,000。"
+up_short_desc,"解锁做空与限价委托：借券费 0.5%/日 · 保证金 150% · 强平线 120% · 限价单每日收盘撮合；单股上限提升至 20,000。"
 st_HYD_name,环带水务
 st_HYD_blurb,环带最老牌的公用事业，水表转一天、钱就进一天。稳健得像太空中没有风。
 st_NFR_name,营养果集团
