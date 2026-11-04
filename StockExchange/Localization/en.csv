@@ -16,7 +16,7 @@ cfg_news_tip,Prints the Orbit Exchange daily close into the newspaper every day.
 news_title,Orbit Exchange Daily Close
 news_display,Orbit Exchange
 news_desc_offline,Exchange terminal offline. Darknet rumor says hooking up reveals daily closing quotes.
-news_desc_hint,Use the exchange terminal (F8 by default) to check quotes and trade — read the paper first.
+news_desc_hint,Press F8 for the exchange terminal
 ui_title,Orbit Exchange
 ui_day,Day
 ui_cash,Cash

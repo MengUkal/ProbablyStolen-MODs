@@ -156,7 +156,9 @@ public static class OrbitNews
         return e;
     }
 
-    /// 8 只标的两行速览 + 提示行（TMP 文本，\n 换行）。
+    /// 一股票一行（名称 价格▲涨跌%），共 8 行 + 提示行。
+    /// 报纸窄栏约 22 个半角单位宽：中文名 4~5 字 + 行情恰好不折行；
+    /// 挤多只会被 TMP 在任意处折行把一只股票撕成两半（实测教训）。
     private static string BuildDigest()
     {
         if (!MarketData.IsReady)
@@ -171,10 +173,10 @@ public static class OrbitNews
             float pc = Mathf.Max(0.01f, st.prevClose[i]);
             float chg = (p - pc) / pc * 100f;
             string arrow = chg > 0.05f ? "▲" : (chg < -0.05f ? "▼" : "·");
-            sb.Append(MarketCatalog.Stocks[i].code)
+            sb.Append(StockExchangeEntry.L("st_" + MarketCatalog.Stocks[i].code + "_name"))
                 .Append(' ').Append(p.ToString("0.0")).Append(arrow)
-                .Append(chg.ToString("+0.0;-0.0;0.0")).Append('%');
-            sb.Append(i % 4 == 3 ? "\n" : "  ");
+                .Append(chg.ToString("+0.0;-0.0;0.0")).Append('%')
+                .Append('\n');
         }
         sb.Append(StockExchangeEntry.L("news_desc_hint"));
         return sb.ToString();
