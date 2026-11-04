@@ -419,9 +419,13 @@ public static class Broker
     /// 挂限价委托。side: 0=买 1=卖 2=开空 3=平空。
     public static string PlaceOrder(int idx, int side, int shares, float limit)
     {
-        if (!InGame() || idx < 0 || idx >= MarketCatalog.Count || shares <= 0 || limit <= 0f)
+        if (!InGame() || idx < 0 || idx >= MarketCatalog.Count || shares <= 0)
         {
             return "msg_bad_qty";
+        }
+        if (limit <= 0f)
+        {
+            return "msg_bad_price";
         }
         var st = MarketData.State;
         StockDef def = MarketCatalog.Stocks[idx];
