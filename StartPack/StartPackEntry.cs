@@ -62,6 +62,7 @@ public class StartPackEntry : IMod
     }
 
     // ---------------------------------------------------------------- 剧本
+    // iconKey 采用 "MOD ID:贴图名" 格式，指向本 MOD Textures/ 目录（CustomUIManager.GetModSprite）
     private void RegisterScenarios()
     {
         // ---- 破产之子 ----
@@ -69,28 +70,28 @@ public class StartPackEntry : IMod
             () => L("sc_heir_title"), () => L("sc_heir_body"),
             new Func<string>[] { () => L("sc_heir_gear1"), () => L("sc_heir_gear2"), () => L("sc_heir_gear3") },
             ScenarioHeirDebt,
-            null, () => L("sc_heir_tag"), StartingScenario.TagTone.Danger);
+            "start.pack:icon_debt", () => L("sc_heir_tag"), StartingScenario.TagTone.Danger);
 
         // ---- 黑市弃徒 ----
         ModHelper.AddStartingScenario(ModId, "sp_black_outcast",
             () => L("sc_outcast_title"), () => L("sc_outcast_body"),
             new Func<string>[] { () => L("sc_outcast_gear1"), () => L("sc_outcast_gear2"), () => L("sc_outcast_gear3") },
             ScenarioBlackOutcast,
-            null, () => L("sc_outcast_tag"), StartingScenario.TagTone.Warning);
+            "start.pack:icon_stock", () => L("sc_outcast_tag"), StartingScenario.TagTone.Warning);
 
         // ---- 收藏家 ----
         ModHelper.AddStartingScenario(ModId, "sp_collector",
             () => L("sc_collector_title"), () => L("sc_collector_body"),
             new Func<string>[] { () => L("sc_collector_gear1"), () => L("sc_collector_gear2"), () => L("sc_collector_gear3") },
             ScenarioCollector,
-            null, () => L("sc_collector_tag"), StartingScenario.TagTone.Positive);
+            "start.pack:icon_cash", () => L("sc_collector_tag"), StartingScenario.TagTone.Positive);
 
         // ---- 赌徒 ----
         ModHelper.AddStartingScenario(ModId, "sp_gambler",
             () => L("sc_gambler_title"), () => L("sc_gambler_body"),
             new Func<string>[] { () => L("sc_gambler_gear1"), () => L("sc_gambler_gear2"), () => L("sc_gambler_gear3") },
             ScenarioGambler,
-            null, () => L("sc_gambler_tag"), StartingScenario.TagTone.Warning);
+            "start.pack:icon_gamble", () => L("sc_gambler_tag"), StartingScenario.TagTone.Warning);
     }
 
     private static void ScenarioHeirDebt()
@@ -157,13 +158,13 @@ public class StartPackEntry : IMod
     private void RegisterPerks()
     {
         ModHelper.AddStartingPerk(ModId, "sp_seed_cash", 2, StartingPerk.StartingPerkType.POSITIVE,
-            () => L("perk_cash_name"), () => L("perk_cash_desc"));
+            () => L("perk_cash_name"), () => L("perk_cash_desc"), "start.pack:icon_cash");
         ModHelper.AddStartingPerk(ModId, "sp_seed_stock", 2, StartingPerk.StartingPerkType.POSITIVE,
-            () => L("perk_stock_name"), () => L("perk_stock_desc"));
+            () => L("perk_stock_name"), () => L("perk_stock_desc"), "start.pack:icon_stock");
         ModHelper.AddStartingPerk(ModId, "sp_seed_tools", 1, StartingPerk.StartingPerkType.POSITIVE,
-            () => L("perk_tools_name"), () => L("perk_tools_desc"));
+            () => L("perk_tools_name"), () => L("perk_tools_desc"), "start.pack:icon_tools");
         ModHelper.AddStartingPerk(ModId, "sp_seed_debt", -2, StartingPerk.StartingPerkType.NEGATIVE,
-            () => L("perk_debt_name"), () => L("perk_debt_desc"));
+            () => L("perk_debt_name"), () => L("perk_debt_desc"), "start.pack:icon_debt");
     }
 
     // ------------------------------------------------- 天赋效果（开局一次）
