@@ -28,6 +28,16 @@ public class StartPackEntry : IMod
 
     private bool hooksAttached;
 
+    // 天赋 id -> 本 MOD 贴图名（Textures/Items/ 下，键为文件名不含扩展名）
+    private static readonly System.Collections.Generic.Dictionary<string, string> PerkIconMap =
+        new System.Collections.Generic.Dictionary<string, string>
+        {
+            { "sp_seed_cash", "icon_cash" },
+            { "sp_seed_stock", "icon_stock" },
+            { "sp_seed_tools", "icon_tools" },
+            { "sp_seed_debt", "icon_debt" }
+        };
+
     public static string L(string key, params object[] args)
     {
         return ModHelper.GetLocalized(ModId, key, args);
@@ -43,8 +53,10 @@ public class StartPackEntry : IMod
     public void OnEnable()
     {
         ModHook.OnNewGameStarted += OnNewGameStarted;
+        ModHook.OnModAssetsLoaded += OnModAssetsLoaded;
         RegisterScenarios();
         RegisterPerks();
+        InstallPerkIcons();
         hooksAttached = true;
         Debug.Log("[StartPack] OnEnable: 4 scenarios + 4 perks registered");
     }
@@ -54,11 +66,48 @@ public class StartPackEntry : IMod
         if (hooksAttached)
         {
             ModHook.OnNewGameStarted -= OnNewGameStarted;
+            ModHook.OnModAssetsLoaded -= OnModAssetsLoaded;
             ModHelper.RemoveStartingScenarios(ModId);
             ModHelper.RemoveStartingPerks(ModId);
             hooksAttached = false;
         }
         Debug.Log("[StartPack] OnDisable");
+    }
+
+    // ------------------------------------------------- 天赋图标注入
+    // 特性网格控件(StartingPerkElement)只读 StartingPerkIconLoader.perkIcons 字典，
+    // 而原版 Start() 每次会清空重填 vanilla 图标。Harmony postfix（见 Patches）保证
+    // 每次清空后我们重新注入；OnModAssetsLoaded 兜底资产就绪后的首次注入。
+    public static void InstallPerkIcons()
+    {
+        try
+        {
+            if (CustomUIManager.Instance == null)
+            {
+                return;
+            }
+            foreach (System.Collections.Generic.KeyValuePair<string, string> kv in PerkIconMap)
+            {
+                Sprite s = CustomUIManager.Instance.GetSprite(ModId + ":" + kv.Value, quiet: true);
+                if (s != null)
+                {
+                    StartingPerkIconLoader.perkIcons[kv.Key] = s;
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning("[StartPack] InstallPerkIcons failed: " + e.Message);
+        }
+    }
+
+    private void OnModAssetsLoaded(LoadedMod mod)
+    {
+        // 仅在本 MOD 资产加载完成时注入一次（避免其他 MOD 资产事件重复执行）
+        if (mod != null && mod.Manifest != null && mod.Manifest.ID == ModId)
+        {
+            InstallPerkIcons();
+        }
     }
 
     // ---------------------------------------------------------------- 剧本

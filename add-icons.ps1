@@ -5,7 +5,7 @@
 # ============================================================================
 $ErrorActionPreference = 'Stop'
 Add-Type -AssemblyName System.Drawing
-$outDir = 'D:\深空当铺MOD\StartPack\Textures'
+$outDir = 'D:\深空当铺MOD\StartPack\Textures\Items'
 New-Item -ItemType Directory -Force -Path $outDir | Out-Null
 
 # 色板：. 透明 / k 描边 / g 金色主 / G 金高光 / b 木箱主 / B 木箱深 / w 绑带米 / c 玻璃青 / h 手柄棕 / R 纸红 / W 纸白 / r 赤点
