@@ -3,6 +3,13 @@
 > 基于 `游戏反编译\Assembly-CSharp\` 全量源码 + `ModHelper`/`ModHook` API 面梳理。
 > 目的：为"接下来做什么 MOD"提供一份有依据、可排期的候选清单。
 
+## 进展速览（2026-11-06 更新）
+
+- ✅ 已完成上架：B1 利润小账本（profit.ledger）、B2 物品图鉴（item.codex）、B4 顾客预览 HUD（customer.hud）、B7 快速睡觉（fast.shutter，卷帘门方案）
+- 🚧 进行中：A1 手柄适配（GamepadPoc，Phase 1 待推进）
+- 📦 发布链路已通：git 仓库（MengUkal/ProbablyStolen-MODs）+ WorkshopUploaderTool 四物品上架 + release 打包
+- ⏭ 下一批推荐：C1 开局剧本包、C4 暗网升级树、C3 新难度（三者纯 API，可合为一个"开局增强包"条目）
+
 ## 〇、总原则
 
 1. **能用官方 API 就不用 Harmony**：游戏自带 ModHelper 暴露了大量注册口（开局剧本/天赋/难度/暗网升级/鉴定题/深夜事件/战利品/纸书/设置页），纯 API 的 MOD 对游戏更新免疫、不需要能力声明、玩家信任弹窗最干净。
