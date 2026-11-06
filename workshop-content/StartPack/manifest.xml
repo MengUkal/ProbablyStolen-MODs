@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Manifest>
+	<ID>start.pack</ID>
+	<Name>开局剧本包 (New Game Scenarios)</Name>
+	<Author>MengUkal</Author>
+	<ModVersion>0.1.0</ModVersion>
+	<Description>新增 4 个开局剧本（破产之子：继承债务与涨租；黑市弃徒：带一批黑货开局；收藏家：满屋珍藏囊中羞涩；赌徒：多带资金与两张彩票）与 4 个新初始天赋（启动资金/进货人脉/老伙计的工具箱/背债），与官方剧本和手柄 MOD 完全兼容。4 new starting scenarios and 4 starting perks. Zero sensitive capabilities.</Description>
+	<GameVersions>
+		<Version>0.46</Version>
+	</GameVersions>
+	<Assemblies>
+		<Assembly>StartPack.dll</Assembly>
+	</Assemblies>
+	<Capabilities/>
+</Manifest>

@@ -1,0 +1,42 @@
+# 注释行以 # 开头; 格式: key,value; 值可用 "..." 包裹, \n 表示换行
+# 开局剧本包 - 简体中文
+sc_heir_title,破产之子
+sc_heir_body,"你接手了父亲的当铺——连同他欠下的债。开局信用点 -400，每周租金 +25。债没有到期日，但它一直都在。"
+sc_heir_gear1,开局信用点 -400
+sc_heir_gear2,每周租金 +25
+sc_heir_gear3,第一天的晨报会提到这笔债
+sc_heir_tag,债务继承
+sc_outcast_title,黑市弃徒
+sc_outcast_body,"被教会驱逐后，你带着一批来路不明的货继续干老本行。开局信用点 -100，但仓库里塞满了出手快的黑货。"
+sc_outcast_gear1,一批来路不明的黑货（断手/等离子燃料/核废料×2）
+sc_outcast_gear2,开局信用点 -100
+sc_outcast_gear3,教会不再欢迎你
+sc_outcast_tag,黑市出身
+sc_collector_title,收藏家
+sc_collector_body,"你有眼光，也有珍藏——只是没有现金。开局信用点 -600，换来三件鉴定行登记在册的珍品和一把放大镜。"
+sc_collector_gear1,三件鉴定行珍品（断手/肋排三明治/等离子燃料）
+sc_collector_gear2,开局信用点 -600
+sc_collector_gear3,附赠一把放大镜
+sc_collector_tag,慧眼藏家
+sc_gambler_title,赌徒
+sc_gambler_body,"开局多 500 信用点，外加两张彩票。就两张，你发誓。每周租金 +15。"
+sc_gambler_gear1,开局信用点 +500
+sc_gambler_gear2,刮刮乐 ×1 + 彩票 ×1
+sc_gambler_gear3,每周租金 +15
+sc_gambler_tag,赌性坚强
+perk_cash_name,启动资金
+perk_cash_desc,新开局时获得 200 信用点
+perk_stock_name,进货人脉
+perk_stock_desc,新开局时仓库额外获得：废金属、通用电子件、水罐
+perk_tools_name,老伙计的工具箱
+perk_tools_desc,新开局时额外获得：放大镜 ×1、标记笔 ×1
+perk_debt_name,背债
+perk_debt_desc,新开局时信用点 -300（换取 2 点天赋点）
+nl_heir_debt,父亲的债，现在是你的了。
+nl_outcast,货是从后舱"捡"来的——别问。
+nl_collector,这些珍藏总有一天会值大钱的……大概。
+nl_gambler,就买两张。真的。
+nl_perk_cash,启动资金到账：+200
+nl_perk_stock,老主顾送来一批物料。
+nl_perk_tools,老伙计留下的工具箱：放大镜和标记笔。
+nl_perk_debt,你还欠着人家 300……先记账上。

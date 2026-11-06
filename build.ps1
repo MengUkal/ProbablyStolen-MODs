@@ -1,4 +1,4 @@
-﻿# ============================================================================
+# ============================================================================
 # Probably Stolen (深空当铺) MOD 一键构建 + 部署脚本
 # 用法:
 #   .\build.ps1                    构建全部 MOD (Release) 并部署到游戏 Mods 目录
@@ -14,7 +14,7 @@ param(
 
 $ErrorActionPreference = "Stop"
 
-$Mods = @("ModTemplate", "ProfitLedger", "CustomerHud", "FastShutter", "ItemCodex", "StockExchange")
+$Mods = @("ModTemplate", "ProfitLedger", "CustomerHud", "FastShutter", "ItemCodex", "StockExchange", "StartPack")
 if ($Mod -ne "all") { $Mods = @($Mod) }
 
 $GameRoot   = "D:\steamwork\steamapps\common\Probably Stolen"
@@ -58,6 +58,15 @@ foreach ($m in $Mods) {
         }
     }
     Write-Host "部署完成: $DestDir" -ForegroundColor Green
+
+    # 同步一份干净的工坊内容暂存。上传创意工坊必须 --content 指向这个目录，
+    # 不能指向工程目录——工程根目录没有 DLL，订阅者会因缺程序集而加载失败。
+    # 直接镜像刚部署到游戏 Mods 的内容（manifest + DLL + Localization/Textures）。
+    $WcDir = Join-Path $PSScriptRoot "workshop-content\$m"
+    if (Test-Path $WcDir) { Remove-Item $WcDir -Recurse -Force }
+    New-Item -ItemType Directory -Force -Path $WcDir | Out-Null
+    Get-ChildItem $DestDir | Copy-Item -Destination $WcDir -Recurse -Force
+    Write-Host "工坊内容暂存: $WcDir" -ForegroundColor DarkGray
 }
 
 if ($Launch) {

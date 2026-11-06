@@ -1,0 +1,42 @@
+# Comments start with #; format: key,value; values may be wrapped in "...", \n = newline
+# New Game Scenarios - English
+sc_heir_title,Heir of Debt
+sc_heir_body,"You inherited your father's pawnshop — along with his debts. Start with -400 credits and +25 weekly rent. The debt has no due date, but it is always there."
+sc_heir_gear1,Start with -400 credits
+sc_heir_gear2,Weekly rent +25
+sc_heir_gear3,The first morning paper mentions the debt
+sc_heir_tag,Debt inheritance
+sc_outcast_title,Black Market Outcast
+sc_outcast_body,"Expelled by the Church, you keep doing business with a stash of questionable goods. Start with -100 credits, but your storage is full of fast-moving contraband."
+sc_outcast_gear1,A stash of shady goods (severed hand / plasma fuel / nuclear waste x2)
+sc_outcast_gear2,Start with -100 credits
+sc_outcast_gear3,The Church no longer welcomes you
+sc_outcast_tag,Black market born
+sc_collector_title,The Collector
+sc_collector_body,"You have the eye, and you have the collection — just no cash. Start with -600 credits, traded for three guild-registered rarities and a magnifier."
+sc_collector_gear1,Three appraisal rarities (severed hand / ribwich / plasma fuel)
+sc_collector_gear2,Start with -600 credits
+sc_collector_gear3,Includes a free magnifier
+sc_collector_tag,Keen collector
+sc_gambler_title,The Gambler
+sc_gambler_body,"Start with 500 extra credits and two lottery tickets. Just two, you swear. Weekly rent +15."
+sc_gambler_gear1,Start with +500 credits
+sc_gambler_gear2,Scratcher x1 + Lottery ticket x1
+sc_gambler_gear3,Weekly rent +15
+sc_gambler_tag,Gambler's spirit
+perk_cash_name,Seed Money
+perk_cash_desc,Gain 200 credits when starting a new game
+perk_stock_name,Supplier Connections
+perk_stock_desc,New games start with extra scrap metal, common electronics and a water jug
+perk_tools_name,Old Pal's Toolbox
+perk_tools_desc,New games start with a magnifier and a marking pen
+perk_debt_name,In Debt
+perk_debt_desc,Lose 300 credits when starting a new game (grants 2 perk points)
+nl_heir_debt,Your father's debt is yours now.
+nl_outcast,The goods came from the aft hold — don't ask.
+nl_collector,These will be worth a fortune someday... probably.
+nl_gambler,Just two tickets. Really.
+nl_perk_cash,Seed money received: +200
+nl_perk_stock,A regular dropped off some supplies.
+nl_perk_tools,An old pal left his toolbox: magnifier and marking pen.
+nl_perk_debt,You still owe someone 300... put it on the tab.

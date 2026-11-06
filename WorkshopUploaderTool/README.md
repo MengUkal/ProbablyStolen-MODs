@@ -24,6 +24,8 @@
 
 ## 已知坑
 
+0. **--content 必须指向干净部署目录**（build.ps1 已自动暂存到 workshop-content\<Mod>\：manifest + DLL + 资源目录）。指向工程目录时根目录没有声明的 DLL，本地测试正常、**订阅用户加载失败且 MOD 不显示**——开局剧本包首发即犯此错。
+
 1. **游戏进程内 MOD 上传会被 ModSteamGuard 硬阻断**并按文件哈希拉黑（清除方法：`clear-stopped.ps1` 或重建换哈希）。
 2. 提交中途崩溃会**锁死该物品**（SubmitItemUpdate 永远 AccessDenied）——放弃该物品另建新的即可。
 3. Steamworks.NET 2024.8 与游戏旧版 steam_api64.dll 二进制不兼容（缺入口点）。
