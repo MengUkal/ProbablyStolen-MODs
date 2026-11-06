@@ -1,5 +1,10 @@
 # 手柄适配 MOD 计划（GamepadSupport）
 
+> ⛔ **项目已终止（2026-11-06）**：工作量超出收益，不再继续。
+> 工坊物品 3831413572 已删除；GamepadPoc 工程已移除（git 历史可找回）。
+> 本文保留作为输入虚拟化研究结论备查。
+
+
 > 目标：让 Probably Stolen（深空当铺）可以**纯手柄**游玩，Windows + Steam Deck（Proton）通吃。
 > 方案代号：`gamepad.support`
 

@@ -5,8 +5,8 @@
 
 ## 进展速览（2026-11-06 更新）
 
-- ✅ 已完成上架：B1 利润小账本（profit.ledger）、B2 物品图鉴（item.codex）、B4 顾客预览 HUD（customer.hud）、B7 快速睡觉（fast.shutter，卷帘门方案）
-- 🚧 进行中：A1 手柄适配（GamepadPoc，Phase 1 待推进）
+- ✅ 已完成上架：B1 利润小账本、B2 物品图鉴、B4 顾客预览 HUD、B7 快速卷帘门、C1-类开局剧本包（start.pack）、E6 环带交易所（stock.exchange）
+- ⛔ 已放弃：A1 手柄适配（2026-11-06 终止，工坊物品已删除，POC 研究结论保留备查）
 - 📦 发布链路已通：git 仓库（MengUkal/ProbablyStolen-MODs）+ WorkshopUploaderTool 四物品上架 + release 打包
 - ⏭ 下一批推荐：C1 开局剧本包、C4 暗网升级树、C3 新难度（三者纯 API，可合为一个"开局增强包"条目）
 

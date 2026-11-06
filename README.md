@@ -57,7 +57,6 @@ powershell -ExecutionPolicy Bypass -File build.ps1 -Clean
 | MOD | ID | 状态 |
 |---|---|---|
 | `ModTemplate\` | ModTemplate | 模板示例，已验证可加载 |
-| `GamepadPoc\` | gamepad.poc | 手柄适配 Phase 0 POC：Transpiler 改写 100/101 方法，自检 335/335 PASS。注意此工程用 **net48** 目标（netstandard2.1 与 0Harmony 的 mscorlib 类型转发冲突）|
 | `ProfitLedger\` | profit.ledger | 利润小账本：Tooltip 利润行（现估值-进价+利润率）+ 持有天数（随存档保存，夜间清理）+ 右上角今日经营统计栏（购/售/净）。已构建部署 |
 | `CustomerHud\` | customer.hud | 顾客预览 HUD：右上角顾客面板（下一位顾客头像/名字/排队，位于统计栏下方 y=-112）+ 跳过顾客快捷键。与 profit.ledger 统计栏相互独立。字体走游戏 FontLoader（zh 中文字库）。已构建部署 |
 | `FastShutter\` | fast.shutter | 快速卷帘门：Prefix 改写 StoreShutterButton.duration 私有字段（原版 2.75s），设置页可调。已构建部署 |
@@ -65,7 +64,9 @@ powershell -ExecutionPolicy Bypass -File build.ps1 -Clean
 | `StockExchange\` | stock.exchange | 环带交易所：暗网解锁的股市系统（8 只空间站股票、像素K线、买卖持仓），行情与报纸事件联动。T1 官方 API 路线**零 Harmony 补丁**；独立 System.Random 不污染游戏 RNG；状态走 ModData 随存档保存。快捷键默认 F8。详见 `docs\股市MOD策划案.md`。已构建部署 |
 | `StartPack\` | start.pack | 开局剧本包：4 个新开局剧本（破产之子/黑市弃徒/收藏家/赌徒）+ 4 个新初始天赋（启动资金/进货人脉/工具箱/背债）。纯官方 API 零补丁。已构建部署 |
 
-**拆分说明**：六个玩法 MOD 互不依赖，可独立上传创意工坊。共享逻辑归属：AcqDays（账本）、DailyStats（HUD）、CodexSeen（图鉴）；ProfitLedger 与 ItemCodex 各自 Harmony 补丁 `PlayerStore.OnItemBought`，互不冲突。原 qol.pack 已解散并从游戏 Mods 目录移除（存档里的启用记录会被 ModLoader 安全忽略）。
+**拆分说明**：五个玩法 MOD 互不依赖，可独立上传创意工坊。共享逻辑归属：AcqDays（账本）、DailyStats（HUD）、CodexSeen（图鉴）；ProfitLedger 与 ItemCodex 各自 Harmony 补丁 `PlayerStore.OnItemBought`，互不冲突。原 qol.pack 已解散并从游戏 Mods 目录移除（存档里的启用记录会被 ModLoader 安全忽略）。
+
+**已放弃**：手柄适配（gamepad.poc）——2026-11-06 终止，GamepadPoc 工程已移除（git 历史可找回），工坊测试物品 3831413572 已删除，研究结论保留在 `docs\手柄MOD计划.md`。
 
 ## 五、创意工坊
 
