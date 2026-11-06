@@ -1,0 +1,29 @@
+[b]开局剧本包 (New Game Scenarios)[/b] — by MengUkal
+
+━━━ 新开局剧本 ━━━
+[list]
+[*][b]破产之子[/b]：接手父亲的当铺，连同他欠下的债——开局 -400 信用点，每周租金 +25
+[*][b]黑市弃徒[/b]：被教会驱逐，带着一批来路不明的货继续干老本行（断手/等离子燃料/核废料）
+[*][b]收藏家[/b]：满屋鉴定行珍品，却囊中羞涩——开局 -600 信用点换来三件珍藏和一把放大镜
+[*][b]赌徒[/b]：开局多 500 信用点，外加刮刮乐和彩票各一张——就两张，你发誓
+[/list]
+
+━━━ 新初始天赋 ━━━
+[list]
+[*][b]启动资金[/b]（2点）：新开局信用点 +200
+[*][b]进货人脉[/b]（2点）：新开局仓库多三件常用物料
+[*][b]老伙计的工具箱[/b]（1点）：新开局多一个放大镜和标记笔
+[*][b]背债[/b]（负面，-2点）：新开局信用点 -300
+[/list]
+天赋对官方剧本同样生效；剧本选择界面的开局彩蛋会写进第一天的晨报。
+
+━━━ 说明 ━━━
+[list]
+[*]纯官方 API 实现（零 Harmony 补丁），兼容游戏 0.46，零敏感能力
+[*]与其他 MOD 无冲突；与「环带交易所」搭配体验极佳——破产开局更要想办法翻身了
+[*]手柄 MOD 玩家可正常在剧本/天赋选择界面导航
+[/list]
+
+[hr]
+[b]New Game Scenarios[/b] by MengUkal
+Adds 4 new starting scenarios (debt heir, black market outcast, collector, gambler) and 4 starting perks (seed money, supplier connections, old pal's toolbox, in-debt). Implemented purely with the official mod API. Compatible with game 0.46.

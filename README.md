@@ -63,6 +63,7 @@ powershell -ExecutionPolicy Bypass -File build.ps1 -Clean
 | `FastShutter\` | fast.shutter | 快速卷帘门：Prefix 改写 StoreShutterButton.duration 私有字段（原版 2.75s），设置页可调。已构建部署 |
 | `ItemCodex\` | item.codex | 物品图鉴：官方 CustomUI 框架，搜索/分类/已见过过滤/详情（默认 F9）。"已见过"随存档保存。已构建部署 |
 | `StockExchange\` | stock.exchange | 环带交易所：暗网解锁的股市系统（8 只空间站股票、像素K线、买卖持仓），行情与报纸事件联动。T1 官方 API 路线**零 Harmony 补丁**；独立 System.Random 不污染游戏 RNG；状态走 ModData 随存档保存。快捷键默认 F8。详见 `docs\股市MOD策划案.md`。已构建部署 |
+| `StartPack\` | start.pack | 开局剧本包：4 个新开局剧本（破产之子/黑市弃徒/收藏家/赌徒）+ 4 个新初始天赋（启动资金/进货人脉/工具箱/背债）。纯官方 API 零补丁。已构建部署 |
 
 **拆分说明**：六个玩法 MOD 互不依赖，可独立上传创意工坊。共享逻辑归属：AcqDays（账本）、DailyStats（HUD）、CodexSeen（图鉴）；ProfitLedger 与 ItemCodex 各自 Harmony 补丁 `PlayerStore.OnItemBought`，互不冲突。原 qol.pack 已解散并从游戏 Mods 目录移除（存档里的启用记录会被 ModLoader 安全忽略）。
 
@@ -74,6 +75,8 @@ powershell -ExecutionPolicy Bypass -File build.ps1 -Clean
 | 顾客预览 HUD Customer HUD | 3832269928 | https://steamcommunity.com/sharedfiles/filedetails/?id=3832269928 |
 | 快速卷帘门 Fast Shutter | 3832270015 | https://steamcommunity.com/sharedfiles/filedetails/?id=3832270015 |
 | 物品图鉴 Item Codex | 3832270090 | https://steamcommunity.com/sharedfiles/filedetails/?id=3832270090 |
+| 环带交易所 Stock Exchange | 3833531537 | https://steamcommunity.com/sharedfiles/filedetails/?id=3833531537 |
+| 开局剧本包 New Game Scenarios | 3834471092 | https://steamcommunity.com/sharedfiles/filedetails/?id=3834471092 |
 
 - 工坊素材（BBCode 描述 + AI 生成封面）在 `workshop-assets/<Mod>/`
 - 更新已有物品：`WorkshopUploaderTool.exe --content <MOD目录> --desc-file <desc> --preview <preview> --id <物品ID> --changenote "..."`

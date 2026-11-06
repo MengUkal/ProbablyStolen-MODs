@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- 开局剧本包 (start.pack) —— Probably Stolen 深空当铺
+       功能：4 个新开局剧本（破产之子/黑市弃徒/收藏家/赌徒）+ 4 个新初始天赋
+       纯官方 API（AddStartingScenario/AddStartingPerk/OnNewGameStarted），无 Harmony 补丁 -->
+
+  <PropertyGroup>
+    <GameRoot>D:\steamwork\steamapps\common\Probably Stolen</GameRoot>
+    <ManagedDir>$(GameRoot)\Probably Stolen_Data\Managed</ManagedDir>
+
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>StartPack</AssemblyName>
+    <RootNamespace>StartPack</RootNamespace>
+    <LangVersion>9.0</LangVersion>
+    <Nullable>disable</Nullable>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+    <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+    <DebugType>portable</DebugType>
+    <NoWarn>$(NoWarn);CS0414;CS0649;CS0067</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(ManagedDir)\Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>$(ManagedDir)\UnityEngine.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(ManagedDir)\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>
