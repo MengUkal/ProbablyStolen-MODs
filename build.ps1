@@ -1,15 +1,15 @@
-# ============================================================================
+﻿# ============================================================================
 # Probably Stolen (深空当铺) MOD 一键构建 + 部署脚本
 # 用法:
 #   .\build.ps1                    构建全部 MOD (Release) 并部署到游戏 Mods 目录
-#   .\build.ps1 -Mod GamepadPoc    只构建指定 MOD
+#   .\build.ps1 -Mod ItemCodex     只构建指定 MOD
 #   .\build.ps1 -Launch            部署后启动游戏
 #   .\build.ps1 -Clean             只清理 bin/obj
 # ============================================================================
 param(
     [switch]$Launch,
     [switch]$Clean,
-    [string]$Mod = "all"   # ModTemplate | GamepadPoc | all
+    [string]$Mod = "all"
 )
 
 $ErrorActionPreference = "Stop"
@@ -17,9 +17,9 @@ $ErrorActionPreference = "Stop"
 $Mods = @("ModTemplate", "ProfitLedger", "CustomerHud", "FastShutter", "ItemCodex", "StockExchange", "StartPack")
 if ($Mod -ne "all") { $Mods = @($Mod) }
 
-$GameRoot   = "D:\steamwork\steamapps\common\Probably Stolen"
-$ModsRoot   = Join-Path $GameRoot "Mods"
-$ExePath    = Join-Path $GameRoot "Probably Stolen.exe"
+$GameRoot = "D:\steamwork\steamapps\common\Probably Stolen"
+$ModsRoot = Join-Path $GameRoot "Mods"
+$ExePath  = Join-Path $GameRoot "Probably Stolen.exe"
 
 if (-not (Test-Path -LiteralPath $ExePath)) {
     throw "找不到游戏: $ExePath — 请修改脚本顶部的 GameRoot"
@@ -46,6 +46,7 @@ foreach ($m in $Mods) {
     $Dll = Join-Path $ProjectDir "bin\Release\$m.dll"
     if (-not (Test-Path -LiteralPath $Dll)) { throw "未找到构建产物: $Dll" }
 
+    # 部署到游戏 Mods 目录（干净结构：manifest + DLL + 资源目录）
     $DestDir = Join-Path $ModsRoot $m
     New-Item -ItemType Directory -Force -Path $DestDir | Out-Null
     Copy-Item -LiteralPath $Dll -Destination $DestDir -Force
@@ -59,13 +60,12 @@ foreach ($m in $Mods) {
     }
     Write-Host "部署完成: $DestDir" -ForegroundColor Green
 
-    # 同步一份干净的工坊内容暂存。上传创意工坊必须 --content 指向这个目录，
-    # 不能指向工程目录——工程根目录没有 DLL，订阅者会因缺程序集而加载失败。
-    # 直接镜像刚部署到游戏 Mods 的内容（manifest + DLL + Localization/Textures）。
+    # 镜像一份干净的工坊内容暂存。上传创意工坊必须 --content 指向这个目录，
+    # 绝对不能指向工程目录——工程根目录没有 DLL，订阅者会因缺程序集而加载失败。
     $WcDir = Join-Path $PSScriptRoot "workshop-content\$m"
-    if (Test-Path $WcDir) { Remove-Item $WcDir -Recurse -Force }
+    if (Test-Path -LiteralPath $WcDir) { Remove-Item -LiteralPath $WcDir -Recurse -Force }
     New-Item -ItemType Directory -Force -Path $WcDir | Out-Null
-    Get-ChildItem $DestDir | Copy-Item -Destination $WcDir -Recurse -Force
+    Get-ChildItem -LiteralPath $DestDir | Copy-Item -Destination $WcDir -Recurse -Force
     Write-Host "工坊内容暂存: $WcDir" -ForegroundColor DarkGray
 }
 
